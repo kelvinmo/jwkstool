@@ -58,33 +58,35 @@ class AddCommand extends AbstractCommand {
     public function execute(InputInterface $input, OutputInterface $output) {
         parent::execute($input, $output);
 
+        $stderr = $this->stderr($output);
+
         try {
             $this->loadKeySet($input->getOption('create'));
         } catch (\RuntimeException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return 1;
         }
         
 
         $key_file = $input->getArgument('key_file');
         if (!file_exists($key_file)) {
-            $output->writeln('<error>Key file not found: ' . $key_file . '</error>');
+            $stderr->writeln('<error>Key file not found: ' . $key_file . '</error>');
             return 1;
         }
         $key_contents = file_get_contents($key_file);
         if ($key_contents === false) {
-            $output->writeln('<error>Cannot read key file: ' . $key_file . '</error>');
+            $stderr->writeln('<error>Cannot read key file: ' . $key_file . '</error>');
             return 1;
         }
 
         try {
             $key = KeyFactory::create($key_contents, $input->getOption('format'));
         } catch (KeyException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return 2;
         }
         if ($key == null) {
-            $output->writeln('<error>Key format or type not recognised</error>');
+            $stderr->writeln('<error>Key format or type not recognised</error>');
             return 2;
         }
 
@@ -95,14 +97,14 @@ class AddCommand extends AbstractCommand {
         try {
             $this->set->add($key);
         } catch (KeyException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return 2;
         }
         
         try {
             $this->saveKeySet();
         } catch (\RuntimeException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return 1;
         }
         

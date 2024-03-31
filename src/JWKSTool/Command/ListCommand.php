@@ -48,10 +48,12 @@ class ListCommand extends AbstractCommand {
     public function execute(InputInterface $input, OutputInterface $output) {
         parent::execute($input, $output);
 
+        $stderr = $this->stderr($output);
+
         try {
             $this->loadKeySet();
         } catch (\RuntimeException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return 1;
         }
 

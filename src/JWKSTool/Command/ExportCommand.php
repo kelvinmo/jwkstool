@@ -52,6 +52,8 @@ class ExportCommand extends AbstractSelectKeyCommand {
     public function execute(InputInterface $input, OutputInterface $output) {
         parent::execute($input, $output);
 
+        $stderr = $this->stderr($output);
+
         try {
             $this->loadKeySet();
         } catch (\RuntimeException $e) {
@@ -66,24 +68,24 @@ class ExportCommand extends AbstractSelectKeyCommand {
                 case 'json':
                     $export = json_encode($key->getKeyData());
                     if ($export === false) {
-                        $output->writeln('<error>Error in exporting to JSON</error>');
+                        $stderr->writeln('<error>Error in exporting to JSON</error>');
                         return 2;
                     }
                     break;
                 case 'pem':
                     if (!($key instanceof PEMInterface)) {
-                        $output->writeln('<error>This kind of key cannot be exported into PEM</error>');
+                        $stderr->writeln('<error>This kind of key cannot be exported into PEM</error>');
                         return 2;
                     }
                     try {
                         $export = $key->toPEM();
                     } catch (\Exception $e) {
-                        $output->writeln('<error>' . $e->getMessage() . '</error>');
+                        $stderr->writeln('<error>' . $e->getMessage() . '</error>');
                         return 2;
                     }
                     break;
                 default:
-                    $output->writeln('<error>Invalid format: ' . $input->getOption('format') . '</error>');
+                    $stderr->writeln('<error>Invalid format: ' . $input->getOption('format') . '</error>');
                     return 1;
             }
 

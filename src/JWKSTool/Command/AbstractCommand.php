@@ -39,6 +39,7 @@ use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
@@ -125,6 +126,10 @@ abstract class AbstractCommand extends SymfonyCommand {
             $result .= ' (kid: ' . $key->getKeyId() . ')';
         }
         return $result;
+    }
+
+    protected function stderr(OutputInterface $output): OutputInterface {
+        return ($output instanceof ConsoleOutputInterface) ? $output->getErrorOutput() : $output;
     }
 }
 

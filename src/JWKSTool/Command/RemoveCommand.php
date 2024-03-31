@@ -51,10 +51,12 @@ class RemoveCommand extends AbstractSelectKeyCommand {
     public function execute(InputInterface $input, OutputInterface $output) {
         parent::execute($input, $output);
 
+        $stderr = $this->stderr($output);
+
         try {
             $this->loadKeySet();
         } catch (\RuntimeException $e) {
-            $output->writeln('<error>' . $e->getMessage() . '</error>');
+            $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return 1;
         }
 
@@ -77,7 +79,7 @@ class RemoveCommand extends AbstractSelectKeyCommand {
             try {
                 $this->saveKeySet();
             } catch (\RuntimeException $e) {
-                $output->writeln('<error>' . $e->getMessage() . '</error>');
+                $stderr->writeln('<error>' . $e->getMessage() . '</error>');
                 return 1;
             }
             $output->writeln('<info>Removed key: ' . $format . '</info>');

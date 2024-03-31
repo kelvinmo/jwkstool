@@ -62,10 +62,11 @@ abstract class AbstractSelectKeyCommand extends AbstractCommand {
         /** @var array<string> $query */
         $query = $input->getOption('query');
         $key = null;
+        $stderr = $this->stderr($output);
 
         if ($index != null) {
             if ($thumb || $query) {
-                $output->writeln('<comment>Warning: key id specified, ignoring --thumb and --query</comment>');
+                $stderr->writeln('<comment>Warning: key id specified, ignoring --thumb and --query</comment>');
             }
             if (is_numeric($index) && (intval($index) >= 0)) {
                 $keys = $this->set->getKeys();
@@ -75,7 +76,7 @@ abstract class AbstractSelectKeyCommand extends AbstractCommand {
             }
         } elseif ($thumb) {
             if ($query) {
-                $output->writeln('<comment>Warning: --thumb specified, ignoring --query</comment>');
+                $stderr->writeln('<comment>Warning: --thumb specified, ignoring --query</comment>');
             }
             $key = $this->set->getByThumbnail($thumb, true);
         } elseif ($query) {
@@ -89,7 +90,7 @@ abstract class AbstractSelectKeyCommand extends AbstractCommand {
 
         if ($key != null) return $key;
 
-        $output->writeln('<error>Key not found</error>');
+        $stderr->writeln('<error>Key not found</error>');
         return null;
     }
 }
