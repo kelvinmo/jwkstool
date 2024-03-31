@@ -4,6 +4,6 @@
 // turn off html errors
 ini_set('html_errors', 'off');
 
-require_once __DIR__ . '/../src/jwkstool.php';
+require_once __DIR__ . '/../bin/jwkstool.php';
 
 __HALT_COMPILER(); ?>
