@@ -45,7 +45,7 @@ use Symfony\Component\Console\Application as SymfonyApplication;
 use Symfony\Component\Console\Command\HelpCommand as SymfonyHelpCommand;
 
 class Application extends SymfonyApplication {
-    public function __construct($version = 'UNKNOWN') {
+    public function __construct(string $version = 'UNKNOWN') {
         parent::__construct('SimpleJWT JWKS tool', $version);
 
         $this->setDefaultCommand('list-commands');
