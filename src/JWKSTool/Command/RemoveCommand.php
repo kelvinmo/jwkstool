@@ -57,7 +57,7 @@ class RemoveCommand extends AbstractSelectKeyCommand {
             $this->loadKeySet();
         } catch (\RuntimeException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-            return 1;
+            return self::FAILURE;
         }
 
         $key = $this->selectKey($input, $output);
@@ -80,12 +80,12 @@ class RemoveCommand extends AbstractSelectKeyCommand {
                 $this->saveKeySet();
             } catch (\RuntimeException $e) {
                 $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-                return 1;
+                return self::FAILURE;
             }
             $output->writeln('<info>Removed key: ' . $format . '</info>');
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 }
 

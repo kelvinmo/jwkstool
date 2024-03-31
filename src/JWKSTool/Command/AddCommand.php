@@ -64,26 +64,26 @@ class AddCommand extends AbstractCommand {
             $this->loadKeySet($input->getOption('create'));
         } catch (\RuntimeException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-            return 1;
+            return self::FAILURE;
         }
         
 
         $key_file = $input->getArgument('key_file');
         if (!file_exists($key_file)) {
             $stderr->writeln('<error>Key file not found: ' . $key_file . '</error>');
-            return 1;
+            return self::FAILURE;
         }
         $key_contents = file_get_contents($key_file);
         if ($key_contents === false) {
             $stderr->writeln('<error>Cannot read key file: ' . $key_file . '</error>');
-            return 1;
+            return self::FAILURE;
         }
 
         try {
             $key = KeyFactory::create($key_contents, $input->getOption('format'));
         } catch (KeyException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-            return 2;
+            return self::INVALID;
         }
         if ($key == null) {
             $stderr->writeln('<error>Key format or type not recognised</error>');
@@ -98,19 +98,19 @@ class AddCommand extends AbstractCommand {
             $this->set->add($key);
         } catch (KeyException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-            return 2;
+            return self::FAILURE;
         }
         
         try {
             $this->saveKeySet();
         } catch (\RuntimeException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-            return 1;
+            return self::FAILURE;
         }
         
         $output->writeln('<info>Added key: ' . $this->formatKey($key) . '</info>');
         
-        return 0;
+        return self::SUCCESS;
     }
 }
 

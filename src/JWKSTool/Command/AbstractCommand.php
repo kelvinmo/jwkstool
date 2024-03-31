@@ -87,7 +87,7 @@ abstract class AbstractCommand extends SymfonyCommand {
         }
 
         $this->jwksFile = $input->getArgument('jwks_file');
-        return 0;
+        return self::SUCCESS;
     }
 
     /**

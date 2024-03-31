@@ -54,7 +54,7 @@ class ListCommand extends AbstractCommand {
             $this->loadKeySet();
         } catch (\RuntimeException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
-            return 1;
+            return self::FAILURE;
         }
 
         $table = new Table($output);
@@ -86,7 +86,7 @@ class ListCommand extends AbstractCommand {
 
         $table->render();
 
-        return 0;
+        return self::SUCCESS;
     }
 }
 
