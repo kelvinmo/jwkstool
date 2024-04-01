@@ -39,6 +39,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use SimpleJWT\Keys\SymmetricKey;
 use SimpleJWT\Keys\PEMInterface;
 
 class ExportCommand extends AbstractSelectKeyCommand {
@@ -47,6 +48,7 @@ class ExportCommand extends AbstractSelectKeyCommand {
         $this->setName('export')->setDescription('Exports a key in the key store');
         $this->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Export to this file or stdout if omitted');
         $this->addOption('format', 'f', InputOption::VALUE_REQUIRED, 'Export in this key format: json, pem', 'json');
+        $this->addOption('export-private', 'P', InputOption::VALUE_NONE, 'Export the private key');
     }
 
     public function execute(InputInterface $input, OutputInterface $output) {
@@ -64,6 +66,13 @@ class ExportCommand extends AbstractSelectKeyCommand {
         $key = $this->selectKey($input, $output);
 
         if ($key) {
+            if (!($key instanceof SymmetricKey) && !$key->isPublic() && !$input->getOption('export-private')) {
+                // If this is not a symmetric key AND this is a private key AND --export-private is not specified,
+                // export the public key only
+                $stderr->writeln('<comment>Warning: exporting public key only</comment>');
+                $stderr->writeln('<comment>(to export the private key, include --export-private)</comment>');
+                $key = $key->getPublicKey();
+            }
             switch ($input->getOption('format')) {
                 case 'json':
                     $export = json_encode($key->getKeyData());
