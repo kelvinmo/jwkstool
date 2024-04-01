@@ -12,8 +12,8 @@ A clear and concise description of what the bug is.
 
 ### Steps to reproduce
 
-Sample code to reproduce the behaviour, including error message
-or unexpected result.
+Steps to reproduce the behaviour, including command-line arguments,
+error message or unexpected result.
 
 ### Expected behaviour
 
