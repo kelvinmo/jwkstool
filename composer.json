@@ -31,7 +31,7 @@
     },
     "bin": [ "bin/jwkstool" ],
     "scripts": {
-        "phar": [ "@composer install", "@composer bin build install", "robo phar" ],
+        "phar": [ "@composer install", "robo phar" ],
         "test": [ "@composer install", "phpunit" ],
         "coverage": [ "@composer install", "phpdbg -qrr vendor/bin/phpunit --coverage-text" ],
         "phpstan": [ "@composer install", "phpstan analyse" ],
