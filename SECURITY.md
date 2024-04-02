@@ -1,7 +1,7 @@
 # Security Policy
 
 This document sets out the security policy and procedures for the
-SimpleJWT project.
+jwkstool project.
 
   * [Supported versions](#supported-versions)
   * [How to report a security issue](#how-to-report-a-security-issue)
@@ -9,7 +9,7 @@ SimpleJWT project.
 
 ## Supported versions
 
-SimpleJWT uses semantic versioning as its version numbering scheme.
+jwkstool uses semantic versioning as its version numbering scheme.
 The meanings of major version, minor version, patch version and initial
 development follows the [Semantic Versioning Specification].
 
@@ -23,15 +23,20 @@ Security patches will be provided for the following:
 
 ## How to report a security issue
 
-If you discover a vulnerability in SimpleJWT, keep it confidential. 
+If you discover a vulnerability in jwkstool, keep it confidential. 
 *Do not disclose the vulnerability to anyone before the advisory is issued.*
+
+jwkstool uses the [SimpleJWT] library for most of its functionality.
+If you discover a vulunerability in that library, please report it
+in accordance with the [Security Policy][simplejwt-security] of that
+library. *Do not report it here.*
 
 Provide details of the vulnerability at the [GitHub Security Advisories]
 page.  For further information, please see the [GitHub documentation].
 
 At a minimum, your report should include:
 
-   1. the version of SimpleJWT, and your hosting environment
+   1. the version of jwkstool, and your hosting environment
    2. the steps required to reproduce the problem
    3. any other information which you think would be useful in diagnosing
       the problem
@@ -61,5 +66,7 @@ pull request.
 
 
 [Semantic Versioning Specification]: https://semver.org/
+[SimpleJWT]: https://github.com/kelvinmo/simplejwt/
+[simplejwt-security]: https://github.com/kelvinmo/simplejwt/blob/master/SECURITY.md
 [GitHub Security Advisories]: https://github.com/kelvinmo/jwkstool/security/advisories
 [GitHub documentation]: https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability
