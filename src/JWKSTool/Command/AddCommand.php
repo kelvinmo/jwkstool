@@ -49,9 +49,10 @@ class AddCommand extends AbstractCommand {
         $this->setName('add')->setDescription('Adds a key to the key store');
         $this->addArgument('key_file', InputArgument::REQUIRED, 'The file name of the key to add');
         $this->addOption('create', 'c', InputOption::VALUE_NONE, 'Create a new key store if it does not exist');
-        $this->addOption('format', 'f', InputOption::VALUE_REQUIRED, 'The key format: auto, json, pem', 'auto');
+        $this->addOption('format', 'f', InputOption::VALUE_REQUIRED, 'The key format: auto, json, pem (and bin, base64, base64url for symmetric keys)', 'auto');
         $this->addOption('id', null, InputOption::VALUE_REQUIRED, 'Set the key id');
-        $this->addOption('use', null, InputOption::VALUE_REQUIRED, 'Set the key use: sig, enc');
+        $this->addOption('generate-id', null, InputOption::VALUE_REQUIRED, 'Generate the key id: thumbnail, iso-time, timestamp');
+        $this->addOption('use', null, InputOption::VALUE_REQUIRED, 'Set the key use: usually one of sig, enc');
         $this->addOption('ops', null, InputOption::VALUE_REQUIRED, 'Set the key operations, delimited by commas');
     }
 
@@ -60,13 +61,19 @@ class AddCommand extends AbstractCommand {
 
         $stderr = $this->stderr($output);
 
+        // Validate command line arguments
+        if ($input->getOption('id') && $input->getOption('generate-id')) {
+            $stderr->writeln('<error>Only one of --id or --generate-id can be specified</error>');
+            return self::INVALID;
+        }
+
+        // Load the key set
         try {
             $this->loadKeySet($input->getOption('create'));
         } catch (\RuntimeException $e) {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return self::FAILURE;
         }
-        
 
         $key_file = $input->getArgument('key_file');
         if (!file_exists($key_file)) {
@@ -87,10 +94,24 @@ class AddCommand extends AbstractCommand {
         }
         if ($key == null) {
             $stderr->writeln('<error>Key format or type not recognised</error>');
-            return 2;
+            return self::FAILURE;
         }
 
         if ($input->getOption('id')) $key->setKeyId($input->getOption('id'));
+        if ($input->getOption('generate-id')) {
+            $prefix = ($input->getOption('use')) ? $input->getOption('use') : 'key';
+            switch ($input->getOption('generate-id')) {
+                case 'thumbnail':
+                    $key->setKeyId($key->getThumbnail());
+                    break;
+                case 'iso-time':
+                    $key->setKeyId($prefix . '-' . gmdate('c'));
+                    break;
+                case 'timestamp':
+                    $key->setKeyId($prefix . '-' . time());
+                    break;
+            }
+        }
         if ($input->getOption('use')) $key->setUse($input->getOption('use'));
         if ($input->getOption('ops')) $key->setOperations(explode(',', $input->getOption('ops')));
 
