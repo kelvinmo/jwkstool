@@ -1,5 +1,6 @@
 {
     "main": "bin/jwkstool.php",
+    "files-bin": ["bin/version"],
     "stub": "build/jwkstool_pharstub.php",
     "output": "bin/jwkstool.phar",
     "chmod": "0755",

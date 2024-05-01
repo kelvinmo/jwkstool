@@ -1,3 +1,4 @@
+bin/version
 vendor
 *.phar
 .phpunit*

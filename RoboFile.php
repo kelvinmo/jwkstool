@@ -23,6 +23,14 @@ class RoboFile extends RoboTasks {
         // 1. Check php config
         $this->checkPharReadonly();
 
+        $version_task = $this->taskExec('git describe --tags --abbrev=0 HEAD')->run();
+        if ($version_task->wasSuccessful()) {
+            $tag = trim($version_task->getMessage());
+            file_put_contents('bin/version', $tag);
+        } else {
+            file_put_contents('bin/version', 'dev');
+        }
+
         // 2. Set up robo collections and create temp directory
         $main_collection = $this->collectionBuilder();
         $prepare_collection = $this->collectionBuilder();

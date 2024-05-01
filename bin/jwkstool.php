@@ -53,7 +53,7 @@ if (file_exists(__DIR__ . '/version')) {
     $version = 'UNKNOWN';
 }
 
-$app = new Application();
+$app = new Application($version);
 $app->run();
 
 ?>
