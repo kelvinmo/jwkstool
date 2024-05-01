@@ -29,10 +29,7 @@ class RoboFile extends RoboTasks {
         $temp = $main_collection->tmpDir();
 
         // 3. Prepare step
-        // (a)
-        $prepare_collection->taskExec('composer bin build install');
-
-        // (b) Copy files to temp directory
+        // (a) Copy files to temp directory
         $prepare_collection->taskMirrorDir([
             'src' => "$temp/src",
             'bin' => "$temp/bin",
@@ -42,10 +39,10 @@ class RoboFile extends RoboTasks {
         $prepare_collection->taskFilesystemStack()->copy('composer.lock', "$temp/composer.lock");
         $prepare_collection->taskFilesystemStack()->copy('box.json', "$temp/box.json");
 
-        // (c) composer install
+        // (b) composer install
         $prepare_collection->taskComposerInstall()->dir($temp)->noDev();
 
-        // (d) run
+        // (c) run
         $result = $prepare_collection->run();
         if (!$result->wasSuccessful()) {
             return $result;
