@@ -56,7 +56,7 @@ class AddCommand extends AbstractCommand {
         $this->addOption('ops', null, InputOption::VALUE_REQUIRED, 'Set the key operations, delimited by commas');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output) {
+    public function execute(InputInterface $input, OutputInterface $output): int {
         parent::execute($input, $output);
 
         $stderr = $this->stderr($output);

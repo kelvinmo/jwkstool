@@ -51,7 +51,7 @@ class ExportCommand extends AbstractSelectKeyCommand {
         $this->addOption('export-private', 'P', InputOption::VALUE_NONE, 'Export the private key');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output) {
+    public function execute(InputInterface $input, OutputInterface $output): int {
         parent::execute($input, $output);
 
         $stderr = $this->stderr($output);

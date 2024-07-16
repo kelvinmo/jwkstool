@@ -45,7 +45,7 @@ class ListCommand extends AbstractCommand {
         $this->setName('list')->setDescription('Lists the set of keys in the key store');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output) {
+    public function execute(InputInterface $input, OutputInterface $output): int {
         parent::execute($input, $output);
 
         $stderr = $this->stderr($output);

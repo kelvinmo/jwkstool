@@ -48,7 +48,7 @@ class RemoveCommand extends AbstractSelectKeyCommand {
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Do not prompt');
     }
 
-    public function execute(InputInterface $input, OutputInterface $output) {
+    public function execute(InputInterface $input, OutputInterface $output): int {
         parent::execute($input, $output);
 
         $stderr = $this->stderr($output);

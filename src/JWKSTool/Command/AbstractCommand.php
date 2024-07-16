@@ -62,7 +62,7 @@ abstract class AbstractCommand extends SymfonyCommand {
         $this->addOption('password', 'p', InputOption::VALUE_OPTIONAL, 'The password used to encrypt the key store', false);
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         /** @var string|false|null $password_option */
         $password_option = $input->getOption('password');
 
