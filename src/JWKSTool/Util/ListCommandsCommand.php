@@ -38,7 +38,7 @@ namespace SimpleJWT\JWKSTool\Util;
 use Symfony\Component\Console\Command\ListCommand as SymfonyListCommand;
 
 class ListCommandsCommand extends SymfonyListCommand {
-    protected function configure() {
+    protected function configure(): void {
         parent::configure();
         $this->setName('list-commands');
         $this->setHidden(true);
