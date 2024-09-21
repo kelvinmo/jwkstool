@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+- Changed: Bump SimpleJWT to version 0.9.2.  See [SimpleJWT's Changelog]
+  for issues fixed by this release
+
 ## [0.9.1]
 
 - Changed: Enhanced compatibility with PHP 8.2
@@ -12,5 +17,7 @@ All notable changes to this project will be documented in this file.
 - Changed: export command will only export the public key unless
   `--export-private` is specified
 
+[Unreleased]: https://github.com/kelvinmo/jwkstool/compare/v0.9.1...HEAD
 [0.9.1]: https://github.com/kelvinmo/jwkstool/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/kelvinmo/jwkstool/releases/tag/v0.9.0
+[SimpleJWT's Changelog]: https://github.com/kelvinmo/simplejwt/blob/master/CHANGELOG.md
