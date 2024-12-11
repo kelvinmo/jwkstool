@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "kelvinmo/simplejwt",
-            "version": "v0.9.2",
+            "version": "v0.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kelvinmo/simplejwt.git",
-                "reference": "80b955899154c5ec07486e5b6eea344735eedc81"
+                "reference": "20934e1d36668bcf3fb16052c3fd83357836acc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kelvinmo/simplejwt/zipball/80b955899154c5ec07486e5b6eea344735eedc81",
-                "reference": "80b955899154c5ec07486e5b6eea344735eedc81",
+                "url": "https://api.github.com/repos/kelvinmo/simplejwt/zipball/20934e1d36668bcf3fb16052c3fd83357836acc4",
+                "reference": "20934e1d36668bcf3fb16052c3fd83357836acc4",
                 "shasum": ""
             },
             "require": {
@@ -46,8 +46,8 @@
             "extra": {
                 "bamarni-bin": {
                     "bin-links": false,
-                    "target-directory": "vendor-bin",
-                    "forward-command": false
+                    "forward-command": false,
+                    "target-directory": "vendor-bin"
                 }
             },
             "autoload": {
@@ -74,9 +74,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kelvinmo/simplejwt/issues",
-                "source": "https://github.com/kelvinmo/simplejwt/tree/v0.9.2"
+                "source": "https://github.com/kelvinmo/simplejwt/tree/v0.9.3"
             },
-            "time": "2024-09-21T07:47:21+00:00"
+            "time": "2024-12-11T10:02:26+00:00"
         },
         {
             "name": "psr/container",
@@ -317,8 +317,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -393,8 +393,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -471,8 +471,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -555,8 +555,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
