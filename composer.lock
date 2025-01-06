@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34e7227542934e65ebee75207f851328",
+    "content-hash": "d652d8eac100ff726dfc5ffa20d1535f",
     "packages": [
         {
             "name": "kelvinmo/simplejwt",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kelvinmo/simplejwt.git",
-                "reference": "4d2bb640aa85d63942ef5e081b6ef494c645e692"
+                "reference": "d8d55ea943c7ab899a9e036238323dd1bf3858f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kelvinmo/simplejwt/zipball/4d2bb640aa85d63942ef5e081b6ef494c645e692",
-                "reference": "4d2bb640aa85d63942ef5e081b6ef494c645e692",
+                "url": "https://api.github.com/repos/kelvinmo/simplejwt/zipball/d8d55ea943c7ab899a9e036238323dd1bf3858f9",
+                "reference": "d8d55ea943c7ab899a9e036238323dd1bf3858f9",
                 "shasum": ""
             },
             "require": {
@@ -61,9 +61,9 @@
             ],
             "support": {
                 "issues": "https://github.com/kelvinmo/simplejwt/issues",
-                "source": "https://github.com/kelvinmo/simplejwt/tree/v1.0.0"
+                "source": "https://github.com/kelvinmo/simplejwt/tree/v1.0.1"
             },
-            "time": "2024-12-14T03:30:17+00:00"
+            "time": "2024-12-30T23:39:09+00:00"
         },
         {
             "name": "psr/container",
@@ -3959,7 +3959,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
