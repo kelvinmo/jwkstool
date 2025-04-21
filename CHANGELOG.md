@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+- Changed: Bump SimpleJWT to version 1.0.2.  See [SimpleJWT's Changelog]
+  for issues fixed by this release
+
 ## [1.0.1]
 
 - Changed: Bump SimpleJWT to version 1.0.1.  See [SimpleJWT's Changelog]
