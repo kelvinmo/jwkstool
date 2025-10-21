@@ -70,7 +70,7 @@ abstract class AbstractSelectKeyCommand extends AbstractCommand {
             }
             if (is_numeric($index) && (intval($index) >= 0)) {
                 $keys = $this->set->getKeys();
-                if ($index < count($keys)) $key = $keys[$index];
+                if ($index < count($keys)) $key = $keys[intval($index)];
             } else {
                 $key = $this->set->getById($index, true);
             }
