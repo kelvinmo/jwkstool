@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [1.1.1]
 
 - Changed: Bump SimpleJWT to version 1.1.1.  See [SimpleJWT's Changelog]
   for issues fixed by this release 
@@ -42,7 +42,7 @@ All notable changes to this project will be documented in this file.
 - Changed: export command will only export the public key unless
   `--export-private` is specified
 
-[Unreleased]: https://github.com/kelvinmo/jwkstool/compare/v1.0.2...HEAD
+[1.1.1]: https://github.com/kelvinmo/jwkstool/compare/v1.0.2...v1.1.1
 [1.0.2]: https://github.com/kelvinmo/jwkstool/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/kelvinmo/jwkstool/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/kelvinmo/jwkstool/compare/v0.9.3...v1.0.0
