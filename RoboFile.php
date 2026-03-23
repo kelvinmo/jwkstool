@@ -4,6 +4,7 @@ use Robo\Tasks as RoboTasks;
 use Robo\Symfony\ConsoleIO;
 use Symfony\Component\Finder\Finder;
 use PHLAK\SemVer\Version;
+use PHLAK\SemVer\InvalidVersionException;
 
 /**
  * This is project's console commands configuration for Robo task runner.
@@ -88,7 +89,7 @@ class RoboFile extends RoboTasks {
     /**
      * Prepares a release.
      * 
-     * @param string $type one of major, minor, patch, pre-release
+     * @param string $type one of major, minor, patch, pre-release, or an exact semantic version
      * @param array $opts
      * @option $dry-run Dry-run, do not make changes
      * @option $ignore-worktree Ignore unstaged and uncommitted changes
@@ -99,9 +100,15 @@ class RoboFile extends RoboTasks {
      */
     public function release(ConsoleIO $io, $type = 'patch', $opts = [ 'prefix' => 'v', 'dry-run' => false, 'update-changelog' => true, 'changelog' => 'CHANGELOG.md', 'push' => true, 'ignore-worktree' => false ]) {
         // 1. Check parameters and unstage/uncommitted changes
+        $exact_version = null;
         if (!in_array($type, ['major', 'minor', 'patch', 'pre-release'])) {
-            $io->error("type is not one of major, minor, patch, pre-release");
-            return 1;
+            try {
+                // $type may be a semantic version - let's try parsing
+                $exact_version = Version::parse($type);
+            } catch (InvalidVersionException $e) {
+                $io->error("type is not one of major, minor, patch, pre-release or and exact version");
+                return 1;
+            }
         }
 
         if (!$opts['ignore-worktree']) {
@@ -134,6 +141,7 @@ class RoboFile extends RoboTasks {
             case 'minor': $new_version->incrementMinor(); break;
             case 'patch': $new_version->incrementPatch(); break;
             case 'pre-release': $new_version->incrementPrerelease(); break;
+            default: $new_version = $exact_version;
         }
         $io->say('New version: ' . (string) $new_version);
 
