@@ -49,10 +49,10 @@ class Application extends SymfonyApplication {
         parent::__construct('SimpleJWT JWKS tool', $version);
 
         $this->setDefaultCommand('list-commands');
-        $this->add(new AddCommand());
-        $this->add(new ListCommand());
-        $this->add(new RemoveCommand());
-        $this->add(new ExportCommand());
+        $this->addCommand(new AddCommand());
+        $this->addCommand(new ListCommand());
+        $this->addCommand(new RemoveCommand());
+        $this->addCommand(new ExportCommand());
     }
 
     protected function getDefaultCommands(): array {
