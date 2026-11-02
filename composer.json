@@ -15,7 +15,8 @@
         "consolidation/robo": "^4.0 || ^5.0",
         "phpstan/phpstan": "^2.0.0",
         "bamarni/composer-bin-plugin": "^1.8", 
-        "phlak/semver": "^5.0 || ^6.0"
+        "phlak/semver": "^5.0 || ^6.0",
+        "cweagans/composer-patches": "^2.0"
     },
     "license": "BSD-3-Clause",
     "authors": [
@@ -43,7 +44,8 @@
     },
     "config": {
         "allow-plugins": {
-            "bamarni/composer-bin-plugin": true
+            "bamarni/composer-bin-plugin": true,
+            "cweagans/composer-patches": true
         }
     }, 
     "extra": {
@@ -51,6 +53,11 @@
             "bin-links": false, 
             "target-directory": "vendor-bin", 
             "forward-command": false
+        },
+        "patches": {
+            "consolidation/robo": {
+                "Symfony console 7.4 compatibility": "https://patch-diff.githubusercontent.com/raw/consolidation/robo/pull/1185.diff"
+            }
         }
     }
 }
