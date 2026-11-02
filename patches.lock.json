@@ -1,0 +1,17 @@
+{
+    "_hash": "180d8cb7fd2b96f3e409c607b3893fb0b62108ebceed3b83f2d3addcc3c7be06",
+    "patches": {
+        "consolidation/robo": [
+            {
+                "package": "consolidation/robo",
+                "description": "Symfony console 7.4 compatibility",
+                "url": "https://patch-diff.githubusercontent.com/raw/consolidation/robo/pull/1185.diff",
+                "sha256": "af8e597fa0ce249f5a49e54f71a69ca8b37c70dcd4571ca13eafc08d568cab2e",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}
