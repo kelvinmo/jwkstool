@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 - Changed: Replaced deprecated add() with addCommand() for compatibility
   with Symfony Console 7.4.
+- Changed: Bump SimpleJWT to version 1.1.3.  See [SimpleJWT's Changelog]
+  for issues fixed by this release
 
 ## [1.1.1]
 
