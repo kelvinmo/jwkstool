@@ -17,3 +17,7 @@ updates:
     directory: "/vendor-bin/build"
     schedule:
       interval: weekly
+    ignore:
+      - dependency-name: 'humbug/box'
+        update-types: ['version-update:semver-patch']
+        
