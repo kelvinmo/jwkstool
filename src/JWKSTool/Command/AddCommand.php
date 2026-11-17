@@ -92,10 +92,6 @@ class AddCommand extends AbstractCommand {
             $stderr->writeln('<error>' . $e->getMessage() . '</error>');
             return self::INVALID;
         }
-        if ($key == null) {
-            $stderr->writeln('<error>Key format or type not recognised</error>');
-            return self::FAILURE;
-        }
 
         if ($input->getOption('id')) $key->setKeyId($input->getOption('id'));
         if ($input->getOption('generate-id')) {
