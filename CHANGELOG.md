@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+
+- Changed: Bump SimpleJWT to version 1.1.4.  See [SimpleJWT's Changelog]
+  for issues fixed by this release
+
 ## [1.1.3]
 
 - Changed: Replaced deprecated add() with addCommand() for compatibility
@@ -49,6 +54,7 @@ All notable changes to this project will be documented in this file.
 - Changed: export command will only export the public key unless
   `--export-private` is specified
 
+[Unreleased]: https://github.com/kelvinmo/jwkstool/compare/v1.1.3...HEAD
 [1.1.3]: https://github.com/kelvinmo/jwkstool/compare/v1.1.1...v1.1.3
 [1.1.1]: https://github.com/kelvinmo/jwkstool/compare/v1.0.2...v1.1.1
 [1.0.2]: https://github.com/kelvinmo/jwkstool/compare/v1.0.1...v1.0.2
