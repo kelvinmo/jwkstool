@@ -57,7 +57,7 @@ abstract class AbstractCommand extends SymfonyCommand {
     /** @var string|null $password */
     private $password = null;
 
-    protected function configure() {
+    protected function configure(): void {
         $this->addArgument('jwks_file', InputArgument::REQUIRED, 'The file name of the key store');
         $this->addOption('password', 'p', InputOption::VALUE_OPTIONAL, 'The password used to encrypt the key store', false);
     }

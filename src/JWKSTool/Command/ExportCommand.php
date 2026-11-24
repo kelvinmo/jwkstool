@@ -43,7 +43,7 @@ use SimpleJWT\Keys\SymmetricKey;
 use SimpleJWT\Keys\PEMInterface;
 
 class ExportCommand extends AbstractSelectKeyCommand {
-    protected function configure() {
+    protected function configure(): void {
         parent::configure();
         $this->setName('export')->setDescription('Exports a key in the key store');
         $this->addOption('output', 'o', InputOption::VALUE_REQUIRED, 'Export to this file or stdout if omitted');

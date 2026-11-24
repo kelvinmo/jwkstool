@@ -44,7 +44,7 @@ use SimpleJWT\Keys\KeyInterface;
 use SimpleJWT\Keys\KeyException;
 
 abstract class AbstractSelectKeyCommand extends AbstractCommand {
-    protected function configure() {
+    protected function configure(): void {
         parent::configure();
         $this->addArgument('index', InputArgument::OPTIONAL, 'Select the key with this index or ID value');
         $this->addOption('thumb', 't', InputOption::VALUE_REQUIRED, 'Select the key with this thumbprint');

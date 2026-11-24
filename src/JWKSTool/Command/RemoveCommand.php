@@ -42,7 +42,7 @@ use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
 class RemoveCommand extends AbstractSelectKeyCommand {
-    protected function configure() {
+    protected function configure(): void {
         parent::configure();
         $this->setName('remove')->setDescription('Removes a key from the key store');
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Do not prompt');

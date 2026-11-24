@@ -40,7 +40,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 
 class ListCommand extends AbstractCommand {
-    protected function configure() {
+    protected function configure(): void {
         parent::configure();
         $this->setName('list')->setDescription('Lists the set of keys in the key store');
     }
