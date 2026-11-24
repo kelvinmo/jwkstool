@@ -44,7 +44,7 @@ use SimpleJWT\Keys\KeyFactory;
 use SimpleJWT\Keys\KeyException;
 
 class AddCommand extends AbstractCommand {
-    protected function configure() {
+    protected function configure(): void {
         parent::configure();
         $this->setName('add')->setDescription('Adds a key to the key store');
         $this->addArgument('key_file', InputArgument::REQUIRED, 'The file name of the key to add');
